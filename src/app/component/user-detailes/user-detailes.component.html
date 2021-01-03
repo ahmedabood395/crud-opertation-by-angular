@@ -1,0 +1,79 @@
+<div class="text-center alert-light">
+  <h1>{{user.name}}</h1>
+  <h1>{{user.email}}</h1>
+  <h1>{{user.city}}</h1>
+</div>
+
+<!---->
+<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Update User</button>
+<div class="modal fade bg-darken-0" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #editForm="ngForm" (ngSubmit)="update(editForm)">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Name</label>
+              <input type="text" pattern="[A-Za-z ]{0,12}" minlength="4" maxlength="12" #namereq="ngModel" required class="form-control" id="name" [(ngModel)]="name" name="name">
+              <span *ngIf="namereq.invalid" class="text-danger">
+                <span *ngIf="namereq.errors.required">*</span>
+                <span *ngIf="namereq.errors.minlength">Invalid less letter </span>
+                <span *ngIf="namereq.errors.pattern">Numper Invalid</span>
+              </span>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label"  >Email</label>
+              <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}" #emailreq="ngModel" required class="form-control" id="email" name="email" [(ngModel)]="email"/>
+              <span *ngIf="emailreq.invalid" class="text-danger">
+                <span *ngIf="emailreq.errors.required">*</span>
+                <span *ngIf="emailreq.errors.pattern">Email Invalid</span>
+              </span>
+            </div>
+            <div class="form-group">
+                <label for="message-text" class="col-form-label" >City</label>
+                <input type="text" pattern="[A-Za-z ]{4,}" #cityreq="ngModel" required class="form-control" id="city" name="city" [(ngModel)]="city"/>
+                <span *ngIf="cityreq.invalid" class="text-danger">
+                  <span *ngIf="cityreq.errors.required">*</span>
+                <span *ngIf="cityreq.errors.pattern">Numper Invalid</span>
+                </span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary ">Update</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#example">
+  Delete User
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Message Deleted</h5>
+      </div>
+      <div class="modal-body">
+        <label class="text-center">Are You Sure ?</label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="delete()">Ok</button>
+        <button type="button" class="btn btn-light" data-dismiss="modal" >Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

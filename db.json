@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "name": "ahmed abood",
+      "email": "aboodahmed859@gmail.com",
+      "city": "Mansoura",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Mohamed",
+      "email": "m@gmail.com",
+      "city": "Demiatte"
+    },
+    {
+      "id": 3,
+      "name": "Asem",
+      "email": "asem@gmail.com",
+      "city": "Tanta"
+    },
+    {
+      "id": 4,
+      "name": "Mostafa",
+      "email": "mo@gmail.com",
+      "city": "Menoufia"
+    },
+    {
+      "name": "Samier",
+      "email": "samier@gmail.com",
+      "city": "RasElbar",
+      "id": 5
+    },
+    {
+      "name": "ali saad",
+      "email": "ali@gmail.com",
+      "city": "Alex",
+      "id": 6
+    }
+  ]
+}

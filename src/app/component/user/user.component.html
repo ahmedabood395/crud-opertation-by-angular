@@ -1,0 +1,58 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand ml-2 border pl-3 pr-3 rounded" routerLink="">User</a>
+  <form class="form-inline">
+<button type="button" class="btn btn-primary my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add New User</button>
+  </form>
+</nav>
+
+<!---->
+<div *ngFor="let u of lstuser" class="text-center">
+    <h1>{{u.name}}</h1>Email:
+    <a [routerLink]="[u.id]">{{u.email}}</a>
+</div>
+
+<div class="modal fade bg-darken-0" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New User</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="create(addForm)">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Name</label>
+              <input type="text" pattern="[A-Za-z ]{0,12}" minlength="4" maxlength="12" #namereq="ngModel" class="form-control" id="name" [(ngModel)]="name" name="name" required/>
+              <span *ngIf="namereq.invalid" class="text-danger">
+                <span *ngIf="namereq.errors.required">*</span>
+                <span *ngIf="namereq.errors.minlength">Invalid less letter </span>
+                <span *ngIf="namereq.errors.pattern">Numper Invalid</span>
+              </span>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label"  >Email</label>
+              <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}" #emailreq="ngModel" class="form-control" id="email" name="email" [(ngModel)]="email" required/>
+              <span *ngIf="emailreq.invalid" class="text-danger">
+                <span *ngIf="emailreq.errors.required">*</span>
+                <span *ngIf="emailreq.errors.pattern">Email Invalid</span>
+              </span>
+            </div>
+            <div class="form-group">
+                <label for="message-text" class="col-form-label" >City</label>
+                <input type="text" pattern="[A-Za-z ]{4,}" #cityreq="ngModel" class="form-control" id="city" name="city" [(ngModel)]="city" required/>
+                <span *ngIf="cityreq.invalid" class="text-danger">
+                  <span *ngIf="cityreq.errors.required">*</span>
+                <span *ngIf="cityreq.errors.pattern">Numper Invalid</span>
+                </span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Create</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
